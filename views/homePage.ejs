@@ -1,0 +1,82 @@
+<% include ./partials/header.ejs %>
+
+
+<center>
+	<div class="container-fluid">
+
+		<div class="container">
+			
+			<div class="row">
+				
+				<div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+					<!-- logout -->
+					<a href='/logout'> Logout </a>
+				</div>
+
+
+				<div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+					<!-- invite a friend -->
+					<a href="/signup"> invite a friend </a>
+				</div>
+	
+
+			</div>
+
+		</div>	
+
+	</div>
+	
+	<div>
+		<!-- write a new chat -->
+		
+		<form method="post" action="/chat">
+
+    		<label for="email">Email</label>
+    		<input class="form-control"  type="text" name="name" value=" <%= currentUser.local.email %> " readonly>
+						
+   			<br>
+						
+    		<label for="email">message</label>
+   			<input class="form-control" type="text" name="message" >
+
+   			<br>
+			
+			<input class="btn btn-default" type="submit" onclick="relodePage()">
+    
+		</form>
+
+	</div>
+
+</center>
+
+	<div>
+		
+		<% for(let i = chats.length - 1; i >= 0; i = i - 1){ %>
+		<br>
+		<%= chats[i].name %>
+		<br>
+		<%= chats[i].message %>
+		<br>
+		<% } %>
+		<br>
+
+	</div>
+
+<% include ./partials/footer.ejs %>
+
+
+
+
+
+<!-- this is a thing to try to get this submit button to work -->
+
+<% function relodePage(){ %>
+
+	<% location.reload(); %>
+
+<% } %>
+
+
+
+
+
